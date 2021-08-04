@@ -4,14 +4,16 @@ using LearningAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LearningAPI.Migrations
 {
     [DbContext(typeof(LearningDataContext))]
-    partial class LearningDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210804144958_Tweaks")]
+    partial class Tweaks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -27,6 +27,15 @@ namespace LearningAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(builder =>
+            {
+                builder.AddDefaultPolicy(pol =>
+                {
+                    pol.AllowAnyMethod();
+                    pol.AllowAnyOrigin();
+                    pol.AllowAnyHeader();
+                });
+            });
             services.AddDbContext<LearningDataContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("learning"));
@@ -48,6 +57,8 @@ namespace LearningAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LearningAPI v1"));
             }
+
+            app.UseCors();
 
             app.UseRouting();
 
